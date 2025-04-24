@@ -8,8 +8,8 @@ load_dotenv()
 
 # Initialize Reddit client
 reddit = praw.Reddit(
-    client_id=os.getenv("REDDIT_CLIENT_ID"),
-    client_secret=os.getenv("REDDIT_CLIENT_SECRET"),
+    client_id="yBxmhkXSNZecDyKwa2BfeQ",
+    client_secret="cULZdAcCwZxVmSr7JJS1zvu3cUK91A",
     username=os.getenv("REDDIT_USERNAME"),
     password=os.getenv("REDDIT_PASSWORD"),
     user_agent=os.getenv("REDDIT_USER_AGENT")
