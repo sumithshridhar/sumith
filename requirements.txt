@@ -1,0 +1,7 @@
+moviepy
+yt-dlp
+praw
+schedule
+python-dotenv
+instabot
+
