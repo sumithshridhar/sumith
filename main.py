@@ -19,27 +19,28 @@ reddit = praw.Reddit(
 # Choose subreddit
 subreddit = reddit.subreddit("PublicFreakout")
 
-# Find and download first Reddit video
+# Find first Reddit video
 for post in subreddit.hot(limit=10):
     if "v.redd.it" in post.url:
         print(f"Found video post: {post.title}")
         print(f"URL: {post.url}")
 
-        # RedditSave video fetch
-        redditsave_info_url = f"https://redditsave.com/info?url={post.url}"
-        html = requests.get(redditsave_info_url).text
+        # Use RedditSave JSON API to get the downloadable .mp4 link
+        json_url = f"https://redditsave.com/info?url={post.url}"
+        html = requests.get(json_url).text
 
-        matches = re.findall(r'href="(https://redditsave\.com/download\.php\?h=.*?\.mp4)"', html)
-        
-        if matches:
-            video_url = matches[0]
+        # Try to find an .mp4 video link in the page content
+        match = re.search(r'https://[^"]+\.mp4', html)
+        if match:
+            video_url = match.group(0)
             print(f"Downloading from: {video_url}")
-            
+
+            # Download the video
             video = requests.get(video_url)
             with open("downloaded_video.mp4", "wb") as f:
                 f.write(video.content)
-            
-            print("✅ Downloaded as 'downloaded_video.mp4'")
+
+            print("✅ Downloaded and saved as 'downloaded_video.mp4'")
         else:
             print("❌ No downloadable video found.")
         break
