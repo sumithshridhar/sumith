@@ -1,5 +1,5 @@
 praw
-moviepy
+moviepy[full]
 requests
 python-dotenv
 
