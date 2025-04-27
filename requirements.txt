@@ -1,7 +1,5 @@
-moviepy
-yt-dlp
 praw
-schedule
+moviepy
+requests
 python-dotenv
-instabot
 
