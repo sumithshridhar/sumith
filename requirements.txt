@@ -1,5 +1,10 @@
 praw
-moviepy[full]
+moviepy
 requests
 python-dotenv
-
+imageio
+imageio-ffmpeg
+numpy
+decorator
+tqdm
+pillow
